@@ -1,0 +1,37 @@
+SELECT * FROM fortune_companies;
+
+
+SELECT company_name,
+CASE WHEN employees >=1000000 THEN "Huge"
+WHEN employees >=100000 THEN "Large" 
+WHEN employees >=10000 THEN "average"
+ELSE "small"
+END AS company_size
+FROM fortune_companies
+ORDER BY company_name;
+
+
+SELECT industry, maternity_leave_weeks
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+AND maternity_leave_weeks > 6;
+
+
+SELECT industry, ROUND(AVG(revenue)) AS "Average Revenue"
+FROM fortune_companies 
+GROUP BY industry 
+HAVING industry = "Retail"
+OR inustry = "Healthcare"
+OR industry = "Manufacturing";
+
+
+SELECT company_name, avg_employee_tenure
+FROM fortune_companies
+GROUP BY company_name
+HAVING avg_employee_tenure >= 5;
+
+
+SELECT company_name, SUM(employees) AS "Retail_employees"
+FROM fortune_companies
+GROUP BY company_name 
+HAVING industry = "Retail";
