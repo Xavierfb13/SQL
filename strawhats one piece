@@ -1,0 +1,54 @@
+CREATE TABLE people (id INTEGER PRIMARY KEY,name TEXT, sex TEXT, age INTEGER);
+
+INSERT INTO people (name,sex,age) VALUES ("Luffy","male",19);
+INSERT INTO people (name,sex,age) VALUES ("zoro","male",21);
+INSERT INTO people (name,sex,age) VALUES
+("sanji","male",21);
+INSERT INTO people (name,sex,age) VALUES
+("nami","female",20);
+INSERT INTO people (name,sex,age) VALUES
+("usopp","male",19);
+INSERT INTO people (name,sex,age) VALUES
+("robin", "female", 30);
+INSERT INTO people (name,sex,age) VALUES
+("brook", "male", 90);
+INSERT INTO people (name,sex,age) VALUES
+("chopper", "male", 17);
+
+
+CREATE TABLE title (id INTEGER PRIMARY KEY, people_id INTEGER, job TEXT, strength INTEGER);
+
+INSERT INTO title (people_id,job,strength)
+VALUES (1, "captin", 10);
+INSERT INTO title (people_id,job,strength)
+VALUES (2, "right hand", 9);
+INSERT INTO title (people_id,job,strength)
+VALUES (3, "cook", 8);
+INSERT INTO title (people_id,job,strength)
+VALUES (4, "navigator", 6);
+INSERT INTO title (people_id,job,strength)
+VAlUES (5, "sniper", 6);
+INSERT INTO title (people_id,job,strength)
+VALUES (6, "archeologist", 7);
+INSERT INTO title (people_id,job,strength)
+VALUES (7, "musician", 7);
+INSERT INTO title (people_id,job,strength)
+VALUES (8, "doctor", 6);
+
+
+SELECT people.name, people.age
+FROM people
+JOIN title
+ON people.id = title.people_id;
+
+SELECT people.name, people.age, title.job,title.strength
+FROM people
+JOIN title
+ON people.id = title.people_id
+WHERE strength >6;
+
+SELECT people.name, people.sex, title.job
+FROM people
+LEFT OUTER JOIN title
+ON people.id = title.people_id
+WHERE sex = "female";
