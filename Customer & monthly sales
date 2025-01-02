@@ -68,3 +68,6 @@ WHERE location like '%Los Angeles%'
 GROUP BY product
 ;
 
+
+
+
